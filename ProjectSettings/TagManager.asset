@@ -17,9 +17,9 @@ TagManager:
   - 
   - 
   - 
+  - Trees
   - 
-  - 
-  - 
+  - BaseTerrain
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 529905891
+    locked: 0
+  - name: Water
+    uniqueID: 3409696113
+    locked: 0
+  - name: Trees
+    uniqueID: 493331123
+    locked: 0
+  - name: Players
+    uniqueID: 2690257681
+    locked: 0
+  - name: Grass
+    uniqueID: 577785069
     locked: 0
