@@ -4,16 +4,53 @@ using UnityEngine;
 
 public class KillerScript : MonoBehaviour
 {
-    //variables de velocitat
-    private float velocity;
+    //Vector per controlar la direcció on vol caminar
+    Vector2 direction;
+    //Variable per controlar l'estat
+    private State state;
 
+    //Variables de moviment i físiques
+    private float velocity = 5f;
+    private Rigidbody2D rb;
 
+    // Es crida un cop al iniciar el joc
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private enum State
+    {
+        Normal,
+        Attack,
+        Mori,
+    }
     // Es crida un cop per frame
     void Update()
     {
-        
+        switch (state)
+        {
+            case State.Normal:
+                HandleMovement();
+                break;
+            case State.Attack:
+                KillerAttack();
+                break;
+            case State.Mori:
+                //F survivor
+                break;
+        }
     }
-
+    // Es crida un cop per cada iteració del motor de físiques.
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + direction * velocity * Time.deltaTime);
+    }
+    private void HandleMovement()
+    {
+        direction.x = Input.GetAxis("Horizontal");
+        direction.y = Input.GetAxis("Vertical");
+    }
     //Funció per trencar el generador.
     private void KickGen(int damage)
     {
@@ -22,7 +59,7 @@ public class KillerScript : MonoBehaviour
          * TakeDamage() del generador golpejat.
          */
     }
-    private void Attack()
+    private void KillerAttack()
     {
         //si l'atac colisiona amb el player, activar el metode TakeDamage() del player.
     }
