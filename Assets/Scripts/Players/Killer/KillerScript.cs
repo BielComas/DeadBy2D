@@ -10,7 +10,7 @@ public class KillerScript : MonoBehaviour
     private State state;
 
     //Variables de moviment i físiques
-    private float velocity = 5f;
+    [SerializeField] private float velocity = 5f;
     private Rigidbody2D rb;
 
     // Es crida un cop al iniciar el joc
@@ -44,12 +44,13 @@ public class KillerScript : MonoBehaviour
     // Es crida un cop per cada iteració del motor de físiques.
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + direction * velocity * Time.deltaTime);
+        rb.MovePosition(rb.position + direction.normalized * velocity * Time.deltaTime);
     }
     private void HandleMovement()
     {
         direction.x = Input.GetAxis("Horizontal");
         direction.y = Input.GetAxis("Vertical");
+             
     }
     //Funció per trencar el generador.
     private void KickGen(int damage)

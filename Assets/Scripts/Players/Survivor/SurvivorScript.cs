@@ -50,7 +50,7 @@ public class SurvivorScript : MonoBehaviour
     // Es crida per cada iteració del motor de físiques (es més exacte)
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + direction * velocity * Time.deltaTime);
+        rb.MovePosition(rb.position + direction.normalized * velocity * Time.deltaTime);
     }
 
     private void HandleMovement()
