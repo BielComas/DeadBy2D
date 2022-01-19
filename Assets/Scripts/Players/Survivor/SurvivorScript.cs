@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class SurvivorScript : MonoBehaviour
 {
-    //Vector per controlar l'input i la direcció on es vol moure el jugador
+    //Vector per controlar l'input i la direcciï¿½ on es vol moure el jugador
     Vector2 direction;
 
     //variable per controlar els estats 
     private State state;
 
-    //Variables de moviment i físiques
+    //Variables de moviment i fï¿½siques
     private float velocity = 5f;
     private Rigidbody2D rb;
 
     //Variables de vida
     private int lifes = 2;
 
-    //S'executa un cop iniciat el joc, va bé per inicialitzar objectes que necessites.
+    //S'executa un cop iniciat el joc, va bï¿½ per inicialitzar objectes que necessites.
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    //màquina d'estats del jugador survivor
+    //mï¿½quina d'estats del jugador survivor
     private enum State
     {
         Normal,
@@ -47,7 +47,7 @@ public class SurvivorScript : MonoBehaviour
 
         }
     }
-    // Es crida per cada iteració del motor de físiques (es més exacte)
+    // Es crida per cada iteraciï¿½ del motor de fï¿½siques (es mï¿½s exacte)
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + direction.normalized * velocity * Time.deltaTime);
@@ -60,7 +60,7 @@ public class SurvivorScript : MonoBehaviour
         direction.y = Input.GetAxis("Vertical");
     }
 
-    //Funció que activen els altres scripts per treure-li vida al player
+    //Funciï¿½ que activen els altres scripts per treure-li vida al player
     public void TakeDamage(int damage)
     {
         lifes -= damage;
