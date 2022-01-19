@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAtMouse : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     Transform target;
     [SerializeField]
     Camera mainCamera;
