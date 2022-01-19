@@ -42,15 +42,31 @@ public class KillerScript : MonoBehaviour
         }
     }
     // Es crida un cop per cada iteració del motor de físiques.
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + direction.normalized * velocity * Time.deltaTime);
-    }
+    
     private void HandleMovement()
     {
-        direction.x = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
-             
+        float moveX = 0f;
+        float moveY = 0f;
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveY = 1f;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            moveY = -1f;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveX = 1f;
+        }
+
+        Vector3 direction = new Vector2(moveX, moveY);
+        transform.position += direction.normalized * velocity * Time.deltaTime; 
+
     }
     //Funció per trencar el generador.
     private void KickGen(int damage)

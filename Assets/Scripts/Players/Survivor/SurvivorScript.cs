@@ -47,17 +47,30 @@ public class SurvivorScript : MonoBehaviour
 
         }
     }
-    // Es crida per cada iteraci� del motor de f�siques (es m�s exacte)
-    private void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + direction.normalized * velocity * Time.deltaTime);
-    }
 
     private void HandleMovement()
     {
+        float moveX = 0f;
+        float moveY = 0f;
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveY = 1f;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            moveY = -1f;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveX = -1f;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveX = 1f;
+        }
 
-        direction.x = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector2(moveX, moveY);
+        transform.position += direction.normalized * velocity * Time.deltaTime;
     }
 
     //Funci� que activen els altres scripts per treure-li vida al player
